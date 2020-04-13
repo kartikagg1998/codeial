@@ -8,6 +8,6 @@ router.get('/',homeController.home);  //home is a function which is in contoller
 router.use('/users',require('./users'));
 
 //for any further routes access from here
-//router.use('/routermame',require('./routerfile))
+//router.use('/routermame',require('./routerfile));
 
 module.exports=router;//use export router so that it is available to main index.js file
