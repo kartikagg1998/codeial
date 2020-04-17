@@ -10,7 +10,11 @@ module.exports.profile=function(request,response)
 //render the signup page
  module.exports.signUp=function(request,response)
  {
-    response.render('./user_sign_up',
+    if(request.isAuthenticated())
+    {
+       return response.redirect('/users/profile');
+    }
+    return response.render('./user_sign_up',
     {
        'title':'user signup',
     });
@@ -18,7 +22,11 @@ module.exports.profile=function(request,response)
 //render the signin page
     module.exports.signIn=function(request,response)
  {
-    response.render('./user_sign_in',
+   if(request.isAuthenticated())
+   {
+      return response.redirect('/users/profile');
+   }
+    return response.render('./user_sign_in',
     {
        'title':'user signin',
     });
@@ -56,5 +64,10 @@ module.exports.profile=function(request,response)
     
     module.exports.create_session=function(request,response)
     {
-       
+       return response.redirect('/');
+    }
+    module.exports.destroySession=function(request,response)
+    {
+       request.logout();
+       return response.redirect('/');
     }

@@ -5,19 +5,59 @@ const port=8000;
 const expressLayouts=require('express-ejs-layouts');
 const db=require("./config/mongoose");
 
+//used for session cookie
+const session=require('express-session');
+const passport=require('passport');
+const passportLocal=require('./config/passport-local-strategy');
+const MongoStore=require('connect-mongo')(session);
+
 app.use(express.urlencoded());
 app.use(cookieParser());
 
 app.use(express.static('./assets'));
 app.use(expressLayouts);
 
+//extract styles and scripts from sub pages into the layout
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
-//use express router
-app.use('/',require('./routes'));
+
+// //use express router
+// app.use('/',require('./routes'));
 
 app.set('view engine','ejs');
 app.set('views','./views');
+
+//a middleware which takes the session cookie and encrypt it
+ app.use(session(
+    {
+        name:'codeial',//name of cookie
+        secret:'blahsomething',//the key which is used to encode and decode
+        saveUninitialized:false,
+        resave:false,
+        cookie:
+        {
+            maxAge:(1000*100*60)//it decide for how much time cookie is valid
+        },
+         store:new MongoStore(
+            {
+                mongooseConnection:db,
+                 autoRemove:'disabled',
+
+             },
+            function(err)
+            {
+                console.log(err||"connect mongo-db setup ok")
+             }
+        )
+    }
+    ));
+    app.use(passport.initialize());//we tell app to use passport
+    app.use(passport.session());
+    app.use(passport.setAuthenticatedUser);
+
+//use express router
+app.use('/',require('./routes'));
+
 
 app.listen(port,function(err)
 {
