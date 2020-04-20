@@ -71,3 +71,8 @@ module.exports.profile=function(request,response)
        request.logout();
        return response.redirect('/');
     }
+
+    module.exports.post=function(request,response)
+    {
+       return response.redirect('/');
+    }

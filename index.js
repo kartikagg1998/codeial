@@ -6,10 +6,10 @@ const expressLayouts=require('express-ejs-layouts');
 const db=require("./config/mongoose");
 //used for session cookie
 const session=require('express-session');
-const passport=require('passport');
-const passportLocal=require('./config/passport-local-strategy');
+const passport=require('passport');//passport libray is used for authentication
+const passportLocal=require('./config/passport-local-strategy');//we use local startegy of passport 
 const MongoStore=require('connect-mongo')(session);
-const sassMiddleware=require('node-sass-middleware');
+const sassMiddleware=require('node-sass-middleware');//this mddleware is used for converting scss ino css
 app.use(sassMiddleware(
     {
         src:"./assets/scss",
@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static('./assets'));
 app.use(expressLayouts);
 
-//extract styles and scripts from sub pages into the layout
+//extract styles and scripts from sub pages(like profile user signin signup..........) into the layout
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
 
