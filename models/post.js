@@ -4,13 +4,18 @@ const postSchema=new mongoose.Schema(
         content:
         {
             type:String,
-            required:true,
+            required:false,
         },
         user:
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref:'User',
-        }
+            ref:'User', ///The ref tells the name of schema to which we refer
+        },
+        comments:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'Comment',//wait can you tell me why sir not use Comment here
+        }]
         },
         {
             timestamps:true,

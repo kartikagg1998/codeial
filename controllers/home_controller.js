@@ -19,7 +19,17 @@ module.exports.home=function(request,response)
         });
       });*/
 
-Post.find({}).populate('user').exec(function(err,posts)
+//populate the user of each post
+Post.find({})
+.populate('user')
+//.populate('comments')
+ .populate({         //nested population
+    path:'comments',
+     populate:{
+         path:'user'
+     }
+ })
+.exec(function(err,posts)
 {
     if(err)
     {

@@ -11,18 +11,53 @@
         <%} %>
         </section>
 
-        <div>
+        <div id="post-list-container">
                 <ul>
-       <% for(i of postContent){%>
-        <li><%= i.content %>
+       <% for(post of postContent){%>
+        <li>
+                <small>
+                        <% if(locals.user && locals.user.id == post.user.id){ %>
+                <a href="/posts/destroy/<%= post.id%>">X</a>
+              <%}%>
+                </small>
+                <p><%= post.content %></p>
          <small>
-                <%= i.user %>
+               <p> <%= post.user.name %></p>
         </small>
-</li>
 
-       <%} %>
-       <ul>
 
+
+       <div class="post-comments">
+               <% if(locals.user){%>
+                <form action="/comments/create"method="POST">
+                        <input type="text" name="content" placeholder="type here for comment...">
+                        <input type="hidden"name="post" value="<%= post._id%>">
+                        <input type="submit" value="Add comment">
+                </form>
+        <%}%>
+</div>
+<div class="post-comments-list">
+        <ul>
+               <% for(comment of post.comments){%>
+                <li>
+                        <small>
+                                <% if((locals.user && locals.user.id == comment.user._id)||post.user){ %>
+                        <a href="/comments/destroy/<%= comment.id%>">X</a>
+                      <%}%>
+                        </small>
+                      
+                               
+                                <p><%= comment.content %></p>
+                       <p><%= comment.user.name%></p>
+
+                </li>
+                <%}%>
+        </ul>
+</div>
+<%} %>
+        </ul>
         </div>
+
+
                 
 
