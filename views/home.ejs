@@ -1,4 +1,3 @@
-
         <h1>Codeial | Home</h1>
         <section id="feed-posts">
                 <h4>Posts</h4>
@@ -12,9 +11,11 @@
         </section>
 
         <div id="post-list-container">
-                <ul>
+        <ul>
        <% for(post of postContent){%>
-        <li>
+
+        <%- include('_post') -%>
+        <!-- <li>
                 <small>
                         <% if(locals.user && locals.user.id == post.user.id){ %>
                 <a href="/posts/destroy/<%= post.id%>">X</a>
@@ -53,7 +54,9 @@
                 </li>
                 <%}%>
         </ul>
-</div>
+</div> -->
+
+    
 <%} %>
         </ul>
         </div>
