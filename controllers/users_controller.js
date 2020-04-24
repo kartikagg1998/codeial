@@ -16,7 +16,7 @@ module.exports.profile=function(request,response)
 //update user profile
  module.exports.update=function(request,response)
     {
-       if(request.user.id=request.params.id){
+       if(request.user.id==request.params.id){
        //User.findByIdAndUpdate(request.params.id,request.body,function(err,user) //or
        User.findByIdAndUpdate(request.params.id,{name:request.body.name,email:request.body.email},function(err,user)
        {
