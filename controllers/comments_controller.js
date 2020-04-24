@@ -28,12 +28,12 @@ module.exports.create=function(request,response)
 module.exports.destroy=function(request,response)
 {
     Comment.findById(request.params.id,function(err,comment)
-    {console.log(post.user);
+    {
         if(comment.user == request.user.id||post.user)
         //if(comment)
         {   let postId=comment.post;
             comment.remove();
-           // Post.comments.deleteOne({comments:request.params.id},function(err){
+           
                Post.findByIdAndUpdate(postId,{$pull: {comments:request.params.id}},function(err,post){
             //here pull is used to find the comment id from comments array(of posts) which is in request.params.id
             return response.redirect('back');

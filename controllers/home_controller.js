@@ -1,5 +1,6 @@
 
 const Post=require('../models/post');
+const User=require('../models/user');
 module.exports.home=function(request,response)
 {
     console.log(request.cookies);
@@ -31,15 +32,20 @@ Post.find({})
  })
 .exec(function(err,posts)
 {
-    if(err)
+    // if(err)
+    // {
+    //     console.log("error in fetching post from database");
+    //     return;
+    // }
+    User.find({},function(err,users)
     {
-        console.log("error in fetching post from database");
-        return;
-    }
-    return response.render('home',{
-        title:'home',
-     postContent:posts,
+        return response.render('home',{
+            title:'home',
+         postContent:posts,
+         all_users:users,
+        });  
     });
+    
   });
    
 }

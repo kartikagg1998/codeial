@@ -1,6 +1,9 @@
-        <h1>Codeial | Home</h1>
+ <link rel="stylesheet" type="text/css" href="/css/home.css">
+ 
+ <h1>Codeial | Home</h1>
+ <div id="home-container"> 
         <section id="feed-posts">
-                <h4>Posts</h4>
+                <h2>Posts</h2>
                <% if(locals.user){ %>
         <form action="/posts/create-post" method="POST" id="new-post-form ">
                 <textarea name="content" rows="4" col="30" placeholder="Type here....."></textarea>
@@ -8,7 +11,7 @@
 
         </form>
         <%} %>
-        </section>
+       
 
         <div id="post-list-container">
         <ul>
@@ -60,6 +63,17 @@
 <%} %>
         </ul>
         </div>
+        </section>
+ <section id="user-friends">
+         <h2>Friends</h2>
+         <% for (u of all_users){%>
+
+                <p>
+                        <a href="users/profile/<%=u.id%>"><%=u.name%></a>
+                       </p>
+                       <%}%>
+ </section>
+ </div>       
 
 
                 

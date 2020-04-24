@@ -71,6 +71,7 @@ app.use('/',require('./routes'));
 app.listen(port,function(err)
 {
     if(err)
+    // are you there?yesm just try once by setting the name as comment .js if it still exits then tell me kya that it still itis not working ye error toe nhi naa rhav ni error nahi hai yeh but voh path ka error de rha hai mongodb path nhi h index.js m shyd
     {
        // console.log("error",err);
         console.log(`error in running the server:${err}`);

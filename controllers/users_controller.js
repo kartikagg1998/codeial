@@ -2,11 +2,33 @@ const User=require('../models/user');
 module.exports.profile=function(request,response)
  {
     //response.end('<h1>Users profile page</h1>');
-    response.render('./user_profile',
+    User.findById(request.params.id,function(err,user){
+    return response.render('./user_profile',
     {
        'title':'users profile',
+       profile_user:user,
+
+
     });
+   });
  }
+
+//update user profile
+ module.exports.update=function(request,response)
+    {
+       if(request.user.id=request.params.id){
+       //User.findByIdAndUpdate(request.params.id,request.body,function(err,user) //or
+       User.findByIdAndUpdate(request.params.id,{name:request.body.name,email:request.body.email},function(err,user)
+       {
+          return response.redirect('back');
+
+         })
+      }
+      else{
+         return response.status(401).send('Unauthorized');
+      }
+    }
+
 //render the signup page
  module.exports.signUp=function(request,response)
  {
@@ -76,3 +98,5 @@ module.exports.profile=function(request,response)
     {
        return response.redirect('/');
     }
+
+    
