@@ -1,24 +1,24 @@
 
 const Post=require('../models/post');
 const User=require('../models/user');
-module.exports.home=function(request,response)
+/*module.exports.home=function(request,response)
 {
     console.log(request.cookies);
     response.cookie('user_id',20);
 
     //response.end('<h1>Express is up for codeial</h1>');
-     /*Post.find({},function(err,post)
-    {
-        if(err)
-       {
-           console.log("error in fetching post from database");
-            return;
-       }
-        return response.render('home',{
-            title:'home',
-         postContent:post,
-        });
-      });*/
+    //  Post.find({},function(err,post)
+    // {
+    //     if(err)
+    //    {
+    //        console.log("error in fetching post from database");
+    //         return;
+    //    }
+    //     return response.render('home',{
+    //         title:'home',
+    //      postContent:post,
+    //     });
+    //   });
 
 //populate the user of each post
 Post.find({})
@@ -48,6 +48,34 @@ Post.find({})
     
   });
    
+}*/
+
+//using async await
+
+module.exports.home = async function (request, response) {
+    try {
+        let posts = await Post.find({}).sort('-createdAt')
+            .populate('user')
+            .populate({         //nested population
+                path: 'comments',
+                populate: {
+                    path: 'user'
+                }
+            });
+
+        let users = await User.find({}, function (err, users) {
+            return response.render('home', {
+                title: 'home',
+                postContent: posts,
+                all_users: users,
+            });
+        });
+    }
+    catch (err) {
+        console.log("error", err);
+    }
+
 }
+
 
 

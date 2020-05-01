@@ -10,6 +10,9 @@ const passport=require('passport');//passport libray is used for authentication
 const passportLocal=require('./config/passport-local-strategy');//we use local startegy of passport 
 const MongoStore=require('connect-mongo')(session);
 const sassMiddleware=require('node-sass-middleware');//this mddleware is used for converting scss ino css
+const flash=require('connect-flash');
+const customMiddleware=require('./config/middleware');
+
 app.use(sassMiddleware(
     {
         src:"./assets/scss",
@@ -64,6 +67,9 @@ app.set('views','./views');
     app.use(passport.session());
     app.use(passport.setAuthenticatedUser);
 
+app.use(flash());//flash messages are stored in sessions
+app.use(customMiddleware.setFlash);//this middleware is used to excess messages in ejs/html file
+
 //use express router
 app.use('/',require('./routes'));
 
@@ -71,7 +77,7 @@ app.use('/',require('./routes'));
 app.listen(port,function(err)
 {
     if(err)
-    // are you there?yesm just try once by setting the name as comment .js if it still exits then tell me kya that it still itis not working ye error toe nhi naa rhav ni error nahi hai yeh but voh path ka error de rha hai mongodb path nhi h index.js m shyd
+   
     {
        // console.log("error",err);
         console.log(`error in running the server:${err}`);
