@@ -40,15 +40,28 @@ module.exports.create=async function(request,response)
             user:request.user._id,
            
         });
+        post.comments.push(comment);
+     post.save();
 
-       
+        if(request.xhr)/**********AJAX request***********/
+        {
+           comment= await comment.populate('user','name').execPopulate();
+            return response.status(200).json(
+                {
+                    data:
+                    {
+                        comment:comment,
+                    },
+                    message:"comment created!"
+                }
+            );
+        }
     // if(err)
     // {
     //     console.log("error occurs in adding comment to the post");
     //     return;
     // }
-    post.comments.push(comment);
-    post.save();
+     
     request.flash('success',"Comment is published");
     response.redirect('back');
 };
@@ -91,6 +104,16 @@ module.exports.destroy=async function(request,response)
            
               await Post.findByIdAndUpdate(postId,{$pull: {comments:request.params.id}});
             //here pull is used to find the comment id from comments array(of posts) which is in request.params.id
+
+            // send the comment id which was deleted back to the views   /**********AJAX request***********/
+            if (request.xhr){
+                return response.status(200).json({
+                    data: {
+                        comment_id: request.params.id
+                    },
+                    message: "Comment deleted"
+                });
+            }
             request.flash('success',"Comment is removed from post");
             return response.redirect('back');
         }
