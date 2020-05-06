@@ -14,19 +14,55 @@ module.exports.profile=function(request,response)
  }
 
 //update user profile
- module.exports.update=function(request,response)
+ module.exports.update= async function(req,res)
     {
-       if(request.user.id==request.params.id){
-       //User.findByIdAndUpdate(request.params.id,request.body,function(err,user) //or
-       User.findByIdAndUpdate(request.params.id,{name:request.body.name,email:request.body.email},function(err,user)
-       {
-          return response.redirect('back');
+      //  if(request.user.id==request.params.id){
+      //  //User.findByIdAndUpdate(request.params.id,request.body,function(err,user) //or
+      //  User.findByIdAndUpdate(request.params.id,{name:request.body.name,email:request.body.email},function(err,user)
+      //  {
+      //     return response.redirect('back');
 
-         })
+      //    })
+      // }
+      // else{
+      //    return response.status(401).send('Unauthorized');
+      // }
+
+      if(req.user.id==req.params.id)
+      {
+         try{
+            let user= await User.findById(req.params.id);
+             User.uploadedAvatar(req ,res,function(err)
+             {
+                if(err){
+                console.log('******MulterError:',err);}
+                
+             
+
+             user.name=req.body.name;
+             user.email=req.body.email;
+
+             if(req.file)
+             {
+                user.avatar=User.avatarPath+"/"+req.file.filename;
+             }
+             user.save();
+             return res.redirect('back');
+
+            });
+         }
+         
+      
+         catch(err){
+            request.flash('error',err);
+            return res.redirect('back');
+         }
       }
       else{
-         return response.status(401).send('Unauthorized');
+         req.flash('error',Unauthorized);
+         return res.status(401).send('Unauthorized');
       }
+
     }
 
 //render the signup page
