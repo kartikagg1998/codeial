@@ -1,4 +1,6 @@
 const User=require('../models/user');
+const fs=require('fs');
+const path=require('path');
 module.exports.profile=function(request,response)
  {
     //response.end('<h1>Users profile page</h1>');
@@ -32,7 +34,7 @@ module.exports.profile=function(request,response)
       {
          try{
             let user= await User.findById(req.params.id);
-             User.uploadedAvatar(req ,res,function(err)
+             User.uploadedAvatar(req,res,function(err)
              {
                 if(err){
                 console.log('******MulterError:',err);}
@@ -44,7 +46,12 @@ module.exports.profile=function(request,response)
 
              if(req.file)
              {
-                user.avatar=User.avatarPath+"/"+req.file.filename;
+                  if(user.avatar)
+                  {
+                    fs.unlinkSync(path.join(__dirname , '..' , user.avatar));
+                 }
+                //this is just saving the path of the uploaded file into the avatar field in the user
+                user.avatar=User.avatarPath+'/'+req.file.filename;
              }
              user.save();
              return res.redirect('back');

@@ -33,7 +33,7 @@ module.exports.create=async function(request,response)
             content:request.body.content,
             user:request.user._id,
         });
-        if(request.xhr)
+        if(request.xhr)/**********AJAX request***********/
         {
             // if we want to populate just the name of the user (we'll not want to send the password in the API), this is how we do it!
             
@@ -98,7 +98,7 @@ module.exports.destroy=async function(request,response)
             post.remove();
            await Comment.deleteMany({post:request.params.id});
 
-           if(request.xhr)
+           if(request.xhr)/**********AJAX request***********/
         {
             return response.status(200).json(
                 {

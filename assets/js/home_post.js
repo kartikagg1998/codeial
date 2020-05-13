@@ -109,12 +109,20 @@ let deletePost=function(deleteLink)
  //loop over all the existing posts on the page (when the window loads for the first time) and call the delete post method on delete link of each, also add AJAX (using the class we've created) to the delete button of each
  let convertPostsToAjax = function(){
      $('#post-list-container>ul>li').each(function(){
-         let self = $(this);
+         let self = $(this); // in self actually the DOM object is stored  The post(which are already exists before the creation of post through ajax)
+                              // you are adding event listner to is stored in self
         let deleteButton = $(' .delete-post-button', self);
         deletePost(deleteButton);
 
         // get the post's id by splitting the id attribute
-        let postId = self.prop('id').split("-")[1];
+        let postId = self.prop('id').split("-")[1];//this first fetched the property id of the post as we know the post id is of the form
+        //                post-<%=post_._id %> so we split the array by using split function this splits the string wherever it encounters
+        //                a '-' and covert it in to an array on the array's 1 element will be the Id of the post
+//                        
+
+
+
+
         new PostComments(postId);
     });
 }

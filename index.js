@@ -27,6 +27,8 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 app.use(express.static('./assets'));
+//make the uploads path available to the browser
+app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(expressLayouts);
 
 //extract styles and scripts from sub pages(like profile user signin signup..........) into the layout
@@ -62,7 +64,13 @@ app.set('views','./views');
              }
         )
     }
-    ));
+    ));//i think error in mongodb
+    //hey no see i had seen same doubt
+    //with other person
+    //here problem is ur server is only not starting
+    //if it was with mongo atleast ur routes shou;d've worked
+    //but that is also not working //but it show error in node modules// node module is everything nodemon node evrything is there
+    //
     app.use(passport.initialize());//we tell app to use passport
     app.use(passport.session());
     app.use(passport.setAuthenticatedUser);

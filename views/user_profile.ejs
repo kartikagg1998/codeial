@@ -7,7 +7,9 @@
     <body>-->
         
        <link rel="stylesheet" href="/css/user_profile.css">
-        <h1 id="heading">User Profile</h1>
+       
+        
+        <img src="<%= user.avatar %>" alt="<%=user.name%>" width="100">
 
         <%if(user.id==profile_user.id){%>
         <!-- here user.id is the id of user who cuttently sign-in   -->
