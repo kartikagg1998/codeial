@@ -7,7 +7,8 @@
     position: absolute;
     margin-top: 0px;
     display: flex;
-    color: white; }
+    color: white; 
+  }
   #header-container ul {
     list-style: none;
     position: relative;
