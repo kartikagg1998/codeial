@@ -1,12 +1,10 @@
 #home-container {
   display: flex;
   font-size: 18px;
-  height: 86%;
- }
+  height: 85%; }
   #home-container #feed-posts {
     width: 70%;
-    padding: 10px;
-     }
+    padding: 10px; }
   #home-container #user-friends {
     width: 30%;
     height: 100%;

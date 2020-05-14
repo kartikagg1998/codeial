@@ -8,6 +8,7 @@ const db=require("./config/mongoose");
 const session=require('express-session');
 const passport=require('passport');//passport libray is used for authentication
 const passportLocal=require('./config/passport-local-strategy');//we use local startegy of passport 
+const passportJWT=require('./config/passport-jwt-strategy');
 const MongoStore=require('connect-mongo')(session);
 const sassMiddleware=require('node-sass-middleware');//this mddleware is used for converting scss ino css
 const flash=require('connect-flash');
@@ -64,13 +65,8 @@ app.set('views','./views');
              }
         )
     }
-    ));//i think error in mongodb
-    //hey no see i had seen same doubt
-    //with other person
-    //here problem is ur server is only not starting
-    //if it was with mongo atleast ur routes shou;d've worked
-    //but that is also not working //but it show error in node modules// node module is everything nodemon node evrything is there
-    //
+    ));
+    
     app.use(passport.initialize());//we tell app to use passport
     app.use(passport.session());
     app.use(passport.setAuthenticatedUser);
