@@ -1,5 +1,6 @@
 const Post=require('../../../models/post');
 const Comment=require('../../../models/comment');
+const User=require('../../../models/user');
 module.exports.index= async function(req,res)
 {
 
@@ -17,13 +18,15 @@ module.exports.index= async function(req,res)
 })
 }
 
+//for deleting post 
 
 module.exports.destroy=async function(request,response)
 {
     try{
    let post= await Post.findById(request.params.id);
-       
-           post.remove();
+        
+            if(post.user==request.user.id){
+          post.remove();
            await Comment.deleteMany({post:request.params.id});
 
           return response.json(200,
@@ -32,6 +35,12 @@ module.exports.destroy=async function(request,response)
             });
            
         }
+    else{
+        return response.json(401,
+            {
+                message:"You cannot delete this post",
+            });
+    }}
     catch(err)
     {
         console.log("*****error",err);
