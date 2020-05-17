@@ -9,6 +9,8 @@ const session=require('express-session');
 const passport=require('passport');//passport libray is used for authentication
 const passportLocal=require('./config/passport-local-strategy');//we use local startegy of passport 
 const passportJWT=require('./config/passport-jwt-strategy');
+
+const googleStrategy=require('./config/passport-google-oauth-strategy');
 const MongoStore=require('connect-mongo')(session);
 const sassMiddleware=require('node-sass-middleware');//this mddleware is used for converting scss ino css
 const flash=require('connect-flash');

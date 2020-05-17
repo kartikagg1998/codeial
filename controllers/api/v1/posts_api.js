@@ -24,7 +24,7 @@ module.exports.destroy=async function(request,response)
 {
     try{
    let post= await Post.findById(request.params.id);
-        
+        console.log(request.user);
             if(post.user==request.user.id){
           post.remove();
            await Comment.deleteMany({post:request.params.id});
@@ -35,6 +35,8 @@ module.exports.destroy=async function(request,response)
             });
            
         }
+        //post delete nhi ho rha
+        //authorization  check krne do
     else{
         return response.json(401,
             {

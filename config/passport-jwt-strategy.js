@@ -9,9 +9,11 @@ jwtFromRequest:ExtractJwt.fromAuthHeaderAsBearerToken(),//in header there is key
 secretOrKey:'codeial'}//used for encryption or decryption of token
 
 passport.use(new JwtStrategy(options,function(jwtPayload,done)//jwtpayload contains all infornation of user(name,password,token lifetime..)
-{                                                          //done is a callback function
+{                                  
+    console.log(options);                        //done is a callback function
     User.findById(jwtPayload._id,function(err,user)
     {
+        console.log(user,"jwt");
         if(err)
         {
             console.log("error in finding user from jwt");
