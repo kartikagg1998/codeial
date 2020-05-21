@@ -5,8 +5,8 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;//this module is used to e
 const User=require('../models/user');
 
 let  options = { //options is an object literal containing options to control how the token is extracted from the request or verified.
-jwtFromRequest:ExtractJwt.fromAuthHeaderAsBearerToken(),//in header there is key authentication in which there is bearer key
-secretOrKey:'codeial'}//used for encryption or decryption of token
+jwtFromRequest:ExtractJwt.fromAuthHeaderAsBearerToken(),//jwtFromRequest tells the strategy from where should it get the jwt that has to be decoded in order to grant authorization to the user
+secretOrKey:'codeial'}//used for encryption or decryption of json web token
 
 passport.use(new JwtStrategy(options,function(jwtPayload,done)//jwtpayload contains all infornation of user(name,password,token lifetime..)
 {                                  

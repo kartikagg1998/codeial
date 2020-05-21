@@ -37,7 +37,7 @@ passport.use(new googleStrategy(
                        password:crypto.randomBytes(20).toString('hex')
                     },function (err,user)
                        {
-                           if(err)   // ????
+                           if(err)   //if there is duplicate value of email or any other error
                            {
                             console.log("error in creating user google-starategy-passport",err);
                             return;

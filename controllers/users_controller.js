@@ -132,6 +132,9 @@ module.exports.profile=function(request,response)
        request.flash('success','Logged in successfully');//req.flash() function  can be used for flash messages.
        return response.redirect('/');
     }
+
+
+    
     module.exports.destroySession=function(request,response)
     {
        request.logout();

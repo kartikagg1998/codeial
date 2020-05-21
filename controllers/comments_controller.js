@@ -1,5 +1,6 @@
 const Comment=require("../models/comment");
 const Post=require("../models/post");
+const commentsMailer= require("../mailers/comments_mailer");
 /*module.exports.create=function(request,response)
 {
     Post.findById(request.body.post,function(err,post) //we store id of post in post in form
@@ -42,10 +43,16 @@ module.exports.create=async function(request,response)
         });
         post.comments.push(comment);
      post.save();
+     comment= await comment.populate('user','name email').execPopulate();
+     console.log(comment)
+     commentsMailer.newComment(comment);
+    // mail to jaa rha h ab filhaal plain mail tumne kafi jgh glt likha hua tha aur render template me kafi directory aur path issue h shayad isliye vo nhi jaa rha ...use fir se krna ??
+    //html me problem aa rhi h, template me issue h bina template ke sahi jaa rha h html ,template ke sath issue h kya issue h usko vaaaps likho video dekhke  tumne mdiarectory bhi glt banai thi template files ki mail sent ho rhi h plain haa okk
+    
 
         if(request.xhr)/**********AJAX request***********/
         {
-           comment= await comment.populate('user','name').execPopulate();
+        //    comment= await comment.populate('user','name').execPopulate();
             return response.status(200).json(
                 {
                     data:
