@@ -1,5 +1,6 @@
 const Comment=require("../models/comment");
 const Post=require("../models/post");
+const Likes=require("../models/like");
 const commentsMailer= require("../mailers/comments_mailer");
 const queue=require("../config/kue");
 const commentEmailWorker=require("../workers/comment_email_worker");
@@ -120,6 +121,8 @@ module.exports.destroy=async function(request,response)
            
               await Post.findByIdAndUpdate(postId,{$pull: {comments:request.params.id}});
             //here pull is used to find the comment id from comments array(of posts) which is in request.params.id
+            //...destroy the associated likes for this comment
+            await Likes.deleteMany({likeable:comment._id,onModel:'Comment'});
 
             // send the comment id which was deleted back to the views   /**********AJAX request***********/
             if (request.xhr){

@@ -147,4 +147,33 @@ module.exports.profile=function(request,response)
        return response.redirect('/');
     }
 
-    
+    module.exports.forgotPassword=function(request,response)
+    {
+       
+      return response.render('./forgot-password',
+      {
+         'title':'Forgot-password',
+      });
+      }
+
+      module.exports.resetPassword=function(request,response)
+      {
+         if(request.body.password!=request.body.confirm_password)
+         {
+            return response.redirect("./forgot-password");
+         }
+         console.log(request.body.password);
+         console.log(request.body.confirm_password);
+         User.findOneAndUpdate({email:request.body.Email},function(err,user){
+         if(err)
+         {
+            console.log("error in finding user");
+         }
+         if(user)
+         {
+            console.log("password changes");
+            user.password=request.body.password;
+            console.log("password changes");
+         }
+      })
+      }

@@ -15,7 +15,17 @@ const postSchema=new mongoose.Schema(
         {
             type: mongoose.Schema.Types.ObjectId,
             ref:'Comment',//wait can you tell me why sir not use Comment here
-        }]
+        }],
+        comments:[
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref:'Comment',//wait can you tell me why sir not use Comment here
+            }],
+            likes:[
+                {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref:'Like',//wait can you tell me why sir not use Comment here
+                }]
         },
         {
             timestamps:true,

@@ -1,5 +1,6 @@
 const Post=require('../models/post');
 const Comment=require('../models/comment');
+const Like=require('../models/like');
 
 //action for creating a post
 /*module.exports.create=function(request,response)
@@ -94,7 +95,11 @@ module.exports.destroy=async function(request,response)
         if(post.user == request.user.id)//here we check that the user of post==user who request for deleting the post
                                         //In passport.js we can fetch the id of current user in the session via req.user.id
     // if(post)req.body has all the parameters that are sent  from the client as part of the post request to server
-        {
+        {   
+            //delete the associated likes for the post and alls it comments likes too
+            await Like.deleteMany({likeable:post,onModel:'Post'});
+            await Like.deleteMany({_id:{$in:post.comments}});
+
             post.remove();
            await Comment.deleteMany({post:request.params.id});
 
