@@ -24,7 +24,13 @@ const userSchema= new mongoose.Schema(
         avatar: //in database we only store path of file which comtain profile picture
         {
             type:String,
-        }
+        },
+        friendships:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Friendship',
+
+        }]
     },
         {
             timestamps:true,
