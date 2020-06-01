@@ -26,7 +26,16 @@
 
         <p><%=profile_user.name %></p>
         <p><%=profile_user.email %></p>
+        <!-- <button>ADD FRIEND</button> -->
         <%}%>
+        <small>
+            <% if (locals.user){%>
+            <button><a class="toggle-like-button" href="/friends/toggle/?id=<%= profile_user.id%>">Add Friend</a></button>
+                <%}%>
+              
+          
+          
+          </small>
         <!-- <%- include('_footer');%>
     </body>
 </html> -->

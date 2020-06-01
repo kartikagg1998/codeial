@@ -11,7 +11,7 @@
 </small>
 
 <!-- display the likes of this post,if user is logged in,then show the link to the toggle likes,else just show the count -->
-<br>
+
 <small>
   <% if (locals.user){%>
   <a class="toggle-like-button"data-likes="<%=post.likes.length %>" href="likes/toggle/?id=<%= post._id%>&type=Post">
@@ -20,14 +20,18 @@
 <%}else{%>
   <%=post.likes.length %>Likes
   <% }%>
+  
 
 
 </small>
 
 
 
+
+
 <div class="post-comments">
    <% if(locals.user){%>
+    <br>
     <!-- let's give an id to the new comment form, we'll also need to make the same changes in home_posts.js where we're adding a post to the page -->
     <form id="post-<%= post._id %>-comments-form" action="/comments/create" method="POST">
     <!-- <form action="/comments/create"method="POST" id="new-comment-form"> withot ajax use this-->

@@ -19,3 +19,15 @@ form {
     margin-top: 30px;
     border: 1px solid blue;
     font-size: 15px; }
+  form #google-signin {
+    width: 55%;
+    background-color: blue;
+    color: white;
+    height: 35px;
+    margin-left: 60px;
+    margin-top: 30px;
+    border: 1px solid blue;
+    font-size: 15px; }
+    form #google-signin a {
+      text-decoration: none;
+      color: white; }

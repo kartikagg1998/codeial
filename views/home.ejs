@@ -61,11 +61,27 @@
 
     
 <%} %>
+<!-- display friends of user who has signed in -->
         </ul>
         </div>
+        <aside>
+        <section id="user-friends">
+                <h2>Friends</h2>
+                <% if(locals.user){ %>
+                <% for (friends of locals.user.friends){%>
+
+                        <% if(friends.from_user.id == locals.user.id) {%>
+                                <a href="users/profile/<%=friends.to_user.id%>"><p><%= friends.to_user.name %></p></a>
+                        <%}%>
+                        <% if(friends.to_user.id == locals.user.id) {%>
+                                <a href="users/profile/<%=friends.from_user.id%>"> <p><%= friends.from_user.name %></p></a>
+                        <% } %>
+                <%}%>
+        <%}%>
         </section>
- <section id="user-friends">
-         <h2>Friends</h2>
+        
+ <section id="users">
+         <h2>Users</h2>
          <% for (u of all_users){%>
 
                 <p>
@@ -73,6 +89,7 @@
                        </p>
                        <%}%>
  </section>
+ </aside>
  </div>  
  
  <script src="/js/home_comment.js"></script>  

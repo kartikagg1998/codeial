@@ -66,15 +66,38 @@ module.exports.home = async function (request, response) {
                 }
                 
             })
-            .populate('likes');
+            .populate('likes')
+            
+            let users = await User.find({});
+        let user;
+        if(request.user){
+              user = await User.findById(request.user._id)
+             .populate({
+                     path : "friends",
+                     populate : {
+                        path : "from_user",//why u popuale both from user and to user , because friends can be both from as well as to(we dont know that us that is person that is signed in is to user or from user )
+                    }                      // from locals.user we know about this who signed in i think haa bt vo toh vahaa locals mei jake pta lgega ejs file mei..yha hmei dono krne pdenge populate okk
+                 })//tumne jb friendhip object bnaya .usko user ki friends array mei kr diya tha add?haa ..dono users ki?pta nhi check krlo
+                 .populate({
+                    path : "friends",
+                    populate : {
+                       path : "to_user"
+                   }
+                });
+            
+            
+        }
 
-        let users = await User.find({}, function (err, users) {
+        console.log(user);
+
+      
             return response.render('home', {
                 title: 'home',
                 postContent: posts,
                 all_users: users,
+                user : user
             });
-        });
+        
     }
     catch (err) {
         console.log("error", err);

@@ -4,9 +4,21 @@
   height: 85%; }
   #home-container #feed-posts {
     width: 70%;
-    padding: 10px; }
-  #home-container #user-friends {
-    width: 30%;
-    height: 100%;
     padding: 10px;
+    position: absolute; }
+  #home-container aside {
+    width: 30%;
+    position: relative;
+    left: 100%;
+    margin-top: -630px;
     border-left: 1px solid lightgrey; }
+    #home-container aside #user-friends {
+      height: 70%;
+      padding: 10px;
+      height: 2px; }
+    #home-container aside a {
+      text-decoration: none; }
+    #home-container aside #users {
+      height: 100%;
+      padding: 10px;
+      margin-top: 45%; }

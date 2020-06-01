@@ -28,5 +28,7 @@ router.get('/auth/google/callback',passport.authenticate('google',{failureRedire
 
 router.get('/forgot-password',usersController.forgotPassword);
 router.post('/reset_password',usersController.resetPassword);
+// router.use('/profile/friends',require('./friends'));
+
 
 module.exports=router;
