@@ -88,7 +88,7 @@ module.exports.home = async function (request, response) {
             
         }
 
-        console.log(user);
+        // console.log(user);
 
       
             return response.render('home', {
