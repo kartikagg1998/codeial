@@ -1,4 +1,5 @@
  <link rel="stylesheet" type="text/css" href="/css/home.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  
  <h1>Codeial | Home</h1>
  <div id="home-container"> 
@@ -7,7 +8,7 @@
                <% if(locals.user){ %>
         <form action="/posts/create-post" method="POST" id="new-post-form">
                 <textarea name="content" rows="4" col="30" placeholder="Type here....."></textarea>
-                <input type="submit" value="post">
+                <input id="post-button"type="submit" value="Post">
 
         </form>
         <%} %>
@@ -66,7 +67,7 @@
         </div>
         <aside>
         <section id="user-friends">
-                <h2>Friends</h2>
+                <h2><span><i class="fa fa-users"></i></span>Friends</h2>
                 <% if(locals.user){ %>
                 <% for (friends of locals.user.friends){%>
 
@@ -81,11 +82,14 @@
         </section>
         
  <section id="users">
-         <h2>Users</h2>
+         <h2>
+               <span><i class="fa fa-users"></i></span>
+                 Users</h2>
          <% for (u of all_users){%>
 
                 <p>
                         <a href="users/profile/<%=u.id%>"><%=u.name%></a>
+                        
                        </p>
                        <%}%>
  </section>

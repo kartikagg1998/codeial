@@ -6,11 +6,21 @@
     width: 70%;
     padding: 10px;
     position: absolute; }
+  #home-container .delete-post-button, #home-container .delete-comment-button {
+    color: red;
+    text-decoration: none; }
+  #home-container #comment-button, #home-container #post-button {
+    background-color: green;
+    border: 1px solid green;
+    height: 25px;
+    color: white; }
+  #home-container p {
+    font-size: 18px; }
   #home-container aside {
     width: 30%;
     position: relative;
     left: 100%;
-    margin-top: -630px;
+    margin-top: -750px;
     border-left: 1px solid lightgrey; }
     #home-container aside #user-friends {
       height: 70%;

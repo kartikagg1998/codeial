@@ -32,5 +32,52 @@ class ChatEngine
                 console.log('a user joined!',data);
             })
         });
+
+            // send a message on clicking the send-message button to server(chat-socket.ejs)
+            $(`#send-message`).click(function()
+            {
+                let msg=$(`#chat-message-input`).val();//here we ftch the value of msg which is typed in chatbox
+
+                if(msg !='')
+                {
+                    self.socket.emit('send_message',{  //send_message is event name
+                        message:msg,
+                        user_email:self.userEmail,
+                        chatroom:'codeial'
+                    });
+                    
+                }
+           
+        });
+
+        self.socket.on('receive_message',function(data)
+        {
+            console.log('message received',data.message);
+
+            let newMessage=$(`<li>`);
+            let messageType='other-message';
+
+            if(data.user_email==self.userEmail)
+            {
+                messageType='self-message';
+            }
+
+            newMessage.append($(`<span>`,
+            {
+                html:data.message,
+                
+
+            }));
+             newMessage.append($(`<div>`,
+             {
+                html:data.user_email,
+                
+             }));
+            newMessage.addClass(messageType);
+            $(`#chat-message-list`).append(newMessage);
+
+
+        })
     }
-    }
+}
+

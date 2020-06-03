@@ -16,7 +16,16 @@ module.exports.chatSockets=function(socketServer){
         console.log("joining request received",data);
         socket.join(data.chatroom);
         io.in(data.chatroom).emit('user_joined',data)//it will  notify to all the other user that new user has join chat room
-    })
+    });
+
+    // detect send msg and broadcast to everyone in the chat room
+    socket.on('send_message',function(data)
+    {
+       
+        io.in(data.chatroom).emit('receive_message',data)
+    });
+
+    
 });
 
 }

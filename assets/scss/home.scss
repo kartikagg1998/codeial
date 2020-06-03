@@ -11,12 +11,28 @@
         position:absolute;
         
     }
+    .delete-post-button ,.delete-comment-button
+    {
+        color:red;
+        text-decoration:none;
+    }
+    #comment-button,#post-button
+    {
+        background-color:green;
+        border:1px solid green;
+        height:25px;
+        color:white;
+    }
+    p
+    {
+        font-size:18px;
+    }
     aside
     {
         width:30%;
         position:relative;
         left:100%;
-        margin-top:-630px;
+        margin-top:-750px;
         border-left:1px solid lightgrey;
         
        

@@ -1,3 +1,6 @@
+#user-chat-box::-webkit-scrollbar {
+    display: none;
+  }
 #user-chat-box
 {
     position:fixed;
@@ -5,24 +8,29 @@
     right:10px;
     height:280px;
     width:300px;
-    background-color:white;
+    background-color:lightcyan;
     box-shadow:1px 1px 1px 1px lightgreen;
     z-index:1;
+    border:2px dotted grey;
+    // overflow-y: scroll;
 
-
+    
 #chat-message-list
 {
     list-style: none;
     overflow:auto;
-    height:80%;
+    height:78%;
+    overflow-y: scroll;
     .other-message
     {
         text-align:left;
         padding:5px;
-        padding-left:0px;
+        margin-left:-40px;
+        
         span {
             display:inline-block;
             padding:10px;
+           
             background-color: pink;;
 
         }
@@ -34,19 +42,19 @@
         span{
             display:inline-block;
             padding:10px;
-            background-color:lightcoral;
+            background-color:lightgreen;
 
         }
     }
 }
 #chat-message-input-container
 {
-    height:14%;
+    height:16%;
     width:100%;
     display:flex;
     #chat-message-input{
         height:70%;
-        width:73%;
+        width:76%;
 
 
     }
@@ -55,8 +63,8 @@
         height:70%;
         width:25%; 
         font-size:15px;
-        background-color:green;
-        border:1px solid green;
+        background-color:red;
+        border:1px solid red;
         color:white;
     }
 
