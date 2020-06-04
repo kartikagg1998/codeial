@@ -1,5 +1,6 @@
 const User=require("../../../models/user");
 const jwt=require("jsonwebtoken");//jsonwebtoken library is used to create token and passport is capable to decrypt the encrypt token
+const env=require('../../../config/environment');
 module.exports.create_session=async function(req,res)
 {
   let user=await User.findOne({email:req.body.email});
@@ -14,7 +15,7 @@ module.exports.create_session=async function(req,res)
         return res.json(200,
             {
                 message:"sign in successful ,here is your token keep it safe",
-                token:jwt.sign(user.toJSON(),'codeial',{expiresIn:'100000'})//doubt sign??
+                token:jwt.sign(user.toJSON(),env.jwt_key,{expiresIn:'100000'})//doubt sign??
             }
             )
       }

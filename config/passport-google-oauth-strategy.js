@@ -2,13 +2,14 @@ const passport=require('passport');
 const googleStrategy=require('passport-google-oauth').OAuth2Strategy;
 const crypto=require('crypto');//crypto library is used to generate random password
 const User=require('../models/user');
+const env=require('./environment');
 
 //tell passport to use a new(google) strategy for login
 passport.use(new googleStrategy(
     {
-        clientID:"967144459178-c5lktvsesvj8j27imqpu390v16rtkhkt.apps.googleusercontent.com",
-        clientSecret:"ll2YWngy-bCC3KYsU-7oRdWT",
-        callbackURL:"http://localhost:8000/users/auth/google/callback",
+        clientID:env.google_client_id,
+        clientSecret:env.google_client_secret,
+        callbackURL:env.google_callback_url,
     },
     //here we ask google to establish the identity of user whose info is provided in profile
     function(accessToken ,refreshToken,profile,done)//refresh token helps to generate access token again when access token expires
