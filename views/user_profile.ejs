@@ -9,7 +9,7 @@
        <link rel="stylesheet" href="/css/user_profile.css">
        
         
-        <img src="<%= user.avatar %>" alt="<%=user.name%>" width="100">
+        <img id="userimage" src="<%= user.avatar %>" alt="<%=user.name%>" width="100">
 
         <%if(user.id==profile_user.id){%>
         <!-- here user.id is the id of user who cuttently sign-in   -->
@@ -19,18 +19,18 @@
                 <input type="email"name="email" placeholder="Your Email" value="<%=profile_user.email%>" required>
 
                 <input type="file" name="avatar" placeholder="profile picture">
-                <input type="submit" value="Update">
+                <button>Update</button>
             </form>
         <%}else{%>
         <!-- else only show the profile info -->
 
-        <p><%=profile_user.name %></p>
-        <p><%=profile_user.email %></p>
+        <p class="user"><%=profile_user.name %></p>
+        <p class="user"><%=profile_user.email %></p>
         <!-- <button>ADD FRIEND</button> -->
         <%}%>
         <small>
             <% if (locals.user){%>
-            <button><a class="toggle-like-button" href="/friends/toggle/?id=<%= profile_user.id%>">Add Friend</a></button>
+            <button id="add-friend"><a class="toggle-like-button" href="/friends/toggle/?id=<%= profile_user.id%>">Add Friend</a></button>
                 <%}%>
               
           

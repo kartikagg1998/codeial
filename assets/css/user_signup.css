@@ -12,10 +12,22 @@ form {
     margin-bottom: 10px; }
   form button {
     width: 25%;
-    background-color: blue;
+    background-color: darkblue;
     color: white;
     height: 35px;
     margin-left: 100px;
     margin-top: 30px;
-    border: 1px solid blue;
+    border: 1px solid darkblue;
     font-size: 15px; }
+  form #signup-google {
+    width: 55%;
+    background-color: darkblue;
+    color: white;
+    height: 35px;
+    margin-left: 60px;
+    margin-top: 30px;
+    border: 1px solid darkblue;
+    font-size: 15px; }
+    form #signup-google a {
+      text-decoration: none;
+      color: white; }

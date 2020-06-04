@@ -2,7 +2,9 @@
 {
     display:flex;
     font-size:18px;
-    height:85%;
+    height:auto;
+    
+   
 
     #feed-posts
     {
@@ -10,6 +12,13 @@
         padding:10px;
         position:absolute;
         
+        
+        
+    }
+    #likes,#comment-likes
+    {
+        color:blue;
+        font-size:17px;
     }
     .delete-post-button ,.delete-comment-button
     {
@@ -32,8 +41,10 @@
         width:30%;
         position:relative;
         left:100%;
-        margin-top:-750px;
-        border-left:1px solid lightgrey;
+        
+        margin-top:-790px;
+        
+         border-left:1px solid grey;
         
        
        
@@ -41,9 +52,13 @@
     #user-friends
     {
        
-        height:70%;
+        // height:50%;
         padding:10px;
+        padding-top: 0px;
+        margin-bottom:-20px;
+        margin-top:-10%;
         height: 2px;
+        
         
        
        
@@ -52,16 +67,24 @@
     }
     a{
         text-decoration:none;
-       
+        color:blue;
+        animation: alternate;
+        
     }
      #users
     {
         
-         height:100%;
+         height:80%;
          padding:10px;
          margin-top:45%;
         
     
+     }
+     #user-profile
+     {
+         height:25px;
+         width:25px;
+         border-radius:50%;
      }
     }
 }

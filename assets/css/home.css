@@ -1,11 +1,14 @@
 #home-container {
   display: flex;
   font-size: 18px;
-  height: 85%; }
+  height: auto; }
   #home-container #feed-posts {
     width: 70%;
     padding: 10px;
     position: absolute; }
+  #home-container #likes, #home-container #comment-likes {
+    color: blue;
+    font-size: 17px; }
   #home-container .delete-post-button, #home-container .delete-comment-button {
     color: red;
     text-decoration: none; }
@@ -20,15 +23,23 @@
     width: 30%;
     position: relative;
     left: 100%;
-    margin-top: -750px;
-    border-left: 1px solid lightgrey; }
+    margin-top: -790px;
+    border-left: 1px solid grey; }
     #home-container aside #user-friends {
-      height: 70%;
       padding: 10px;
+      padding-top: 0px;
+      margin-bottom: -20px;
+      margin-top: -10%;
       height: 2px; }
     #home-container aside a {
-      text-decoration: none; }
+      text-decoration: none;
+      color: blue;
+      animation: alternate; }
     #home-container aside #users {
-      height: 100%;
+      height: 80%;
       padding: 10px;
       margin-top: 45%; }
+    #home-container aside #user-profile {
+      height: 25px;
+      width: 25px;
+      border-radius: 50%; }

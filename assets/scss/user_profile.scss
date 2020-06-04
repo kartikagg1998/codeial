@@ -4,5 +4,57 @@ p
 }
 #heading
 {
-    color:blue;
+    color:darkblue;
+}
+#userimage
+{
+    margin-left:45%;
+    margin-top:7%;
+    margin-bottom:2%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width:20%;
+    margin-left:40%;
+
+   input
+{
+    height:35px;
+    margin-bottom:10px;
+}
+button
+{
+    width:25%;
+    background-color: darkblue;
+    color:white;
+    height:35px;
+    margin-left:100px;
+    margin-top:30px;
+    border:1px solid darkblue;
+    font-size:15px;
+}}
+.user
+{
+    margin-left:665px;
+    margin-top:30px; 
+}
+#add-friend
+{
+    
+    width:8%;
+    background-color: darkblue;
+    color:white;
+    height:35px;
+    margin-left:685px;
+    margin-top:30px;
+    border:1px solid darkblue;
+    font-size:15px;
+    a
+    {
+        color:white;
+        text-decoration:none;
+    }
+
 }
