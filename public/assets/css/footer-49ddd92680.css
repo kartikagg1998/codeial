@@ -1,0 +1,11 @@
+#footer-container {
+  height: 40px;
+  width: 100%;
+  background-color: darkblue;
+  padding-top: 5px;
+  padding-top: 8px;
+  display: flex; }
+  #footer-container a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px; }

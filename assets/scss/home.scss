@@ -3,17 +3,12 @@
     display:flex;
     font-size:18px;
     height:auto;
+    position:absolute;
     
-   
-
     #feed-posts
     {
         width:70%;
         padding:10px;
-        position:absolute;
-        
-        
-        
     }
     #likes,#comment-likes
     {
@@ -42,14 +37,13 @@
         position:relative;
         left:100%;
         
-        margin-top:-460px;
+        
+         margin-top:25px;
         
          border-left:1px solid grey;
         
        
-       
-    
-    #user-friends
+     #user-friends
     {
        
         // height:50%;
@@ -58,11 +52,6 @@
         margin-bottom:-20px;
         margin-top:-10%;
         height: 2px;
-        
-        
-       
-       
-       
         
     }
     a{

@@ -1,0 +1,45 @@
+#home-container {
+  display: flex;
+  font-size: 18px;
+  height: auto; }
+  #home-container #feed-posts {
+    width: 70%;
+    padding: 10px;
+    position: absolute; }
+  #home-container #likes, #home-container #comment-likes {
+    color: blue;
+    font-size: 17px; }
+  #home-container .delete-post-button, #home-container .delete-comment-button {
+    color: red;
+    text-decoration: none; }
+  #home-container #comment-button, #home-container #post-button {
+    background-color: green;
+    border: 1px solid green;
+    height: 25px;
+    color: white; }
+  #home-container p {
+    font-size: 18px; }
+  #home-container aside {
+    width: 30%;
+    position: relative;
+    left: 100%;
+    margin-top: -460px;
+    border-left: 1px solid grey; }
+    #home-container aside #user-friends {
+      padding: 10px;
+      padding-top: 0px;
+      margin-bottom: -20px;
+      margin-top: -10%;
+      height: 2px; }
+    #home-container aside a {
+      text-decoration: none;
+      color: blue;
+      animation: alternate; }
+    #home-container aside #users {
+      height: 80%;
+      padding: 10px;
+      margin-top: 45%; }
+    #home-container aside #user-profile {
+      height: 25px;
+      width: 25px;
+      border-radius: 50%; }
