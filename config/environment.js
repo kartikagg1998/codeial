@@ -24,7 +24,7 @@ const development=
     secure: false,
     auth: {
         user: 'akartik1998@gmail.com',
-        pass: 'subhash@1998'
+        pass: '****'
     }},
     google_client_id:"967144459178-c5lktvsesvj8j27imqpu390v16rtkhkt.apps.googleusercontent.com",
     google_client_secret:"ll2YWngy-bCC3KYsU-7oRdWT",
