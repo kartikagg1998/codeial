@@ -7,7 +7,7 @@ class ChatEngine
         this.chatBox=$(`#${chatBoxId}`);
         this.userEmail=userEmail;//the emailid of the user who initiates the chat
 
-        this.socket=io.connect('http://localhost:5000');//the request is send for chatting
+        this.socket=io.connect('http://100.25.168.114:5000');//the request is send for chatting
 
         if(this.userEmail){//if there is user find then chat box appear for chatting it is for security purpose
             this.connectionHandler();
